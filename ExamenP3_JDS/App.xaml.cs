@@ -2,11 +2,14 @@
 {
     public partial class App : Application
     {
-        public App()
+        public static PersonajeRepositoryJDS personajesRepo { get; private set; }
+        public App(PersonajeRepositoryJDS repo)
         {
             InitializeComponent();
 
             MainPage = new AppShell();
+
+            personajesRepo = repo;
         }
     }
 }
