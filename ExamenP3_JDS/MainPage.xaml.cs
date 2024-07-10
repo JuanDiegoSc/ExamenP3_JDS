@@ -1,24 +1,27 @@
-﻿namespace ExamenP3_JDS
+﻿using ExamenP3_JDS.Servicios;
+
+namespace ExamenP3_JDS
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly IPersonajesJDS _personajesJDS;
 
-        public MainPage()
+        public MainPage(IPersonajesJDS personajesJDS)
         {
             InitializeComponent();
+            _personajesJDS = personajesJDS;
+            BindingContext = this;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+
+        private async void ConsultaBTN_Clicked(object sender, EventArgs e)
         {
-            count++;
+            Loading.IsVisible = true;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            var data = await _personajesJDS.ObtenerPersonaje();
+            listPersonajes.ItemsSource = data;
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            Loading.IsVisible = false;
         }
     }
 
