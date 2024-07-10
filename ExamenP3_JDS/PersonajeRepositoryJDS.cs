@@ -10,10 +10,6 @@ namespace ExamenP3_JDS
 {
     public class PersonajeRepositoryJDS
     {
-        public class SQLiteRepository
-        {
-
-
             string _dbPath;
 
             public string StatusMessage { get; set; }
@@ -32,7 +28,7 @@ namespace ExamenP3_JDS
                 connJDS.CreateTable<PersonajesJDS>();
             }
 
-            public SQLiteRepository(string dbPath)
+            public PersonajeRepositoryJDS(string dbPath)
             {
                 _dbPath = dbPath;
             }
@@ -50,7 +46,7 @@ namespace ExamenP3_JDS
                         throw new Exception("Valid name required");
 
                     // enter this line
-                    result = connJDS.Insert(new PersonajesJDS { nameJDS = name });
+                    result = connJDS.Insert(new PersonajesJDS { name = name });
 
                 // basic validation to ensure a name was entered
                 if (string.IsNullOrEmpty(name))
@@ -85,4 +81,3 @@ namespace ExamenP3_JDS
 
         }
     }
-}

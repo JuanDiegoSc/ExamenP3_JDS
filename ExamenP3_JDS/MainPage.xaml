@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExamenP3_JDS.ViewModels"
              x:Class="ExamenP3_JDS.MainPage">
 
     <ScrollView>
         <VerticalStackLayout>
 
             <Button x:Name="ConsultaBTN"
-            Text="ObtenerJuegos"
+            Text="Obtener Personajes"
             Clicked="ConsultaBTN_Clicked"
-            HorizontalOptions="Center"
-        ></Button>
+            HorizontalOptions="Center"></Button>
 
             <ActivityIndicator x:Name="Loading"
                        HeightRequest="30"
@@ -18,24 +18,25 @@
                        IsRunning="True"
                        IsVisible="False">
             </ActivityIndicator>
-
             <ListView x:Name="listPersonajes">
-
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="10">
                                 <Label 
-                            Text="{Binding nameJDS}"
+                            Text="{Binding name}"
                             VerticalTextAlignment="Center"
                             Margin="10,0,0,0"></Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
+
+            <Button x:Name="GuardarSQLite"
+                    Text="GuardarPersonajes"
+                    Clicked="GuardarSQLite_Clicked"
+                    HorizontalOptions="Center"></Button>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

@@ -20,8 +20,13 @@ namespace ExamenP3_JDS
 
             var data = await _personajesJDS.ObtenerPersonaje();
             listPersonajes.ItemsSource = data;
-
             Loading.IsVisible = false;
+        }
+
+        private void GuardarSQLite_Clicked(object sender, EventArgs e)
+        {
+            var id =_personajesJDS.ObtenerPersonaje().Id.ToString();
+            App.personajesRepo.AddNewPerson(id);
         }
     }
 

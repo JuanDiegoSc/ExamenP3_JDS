@@ -22,7 +22,7 @@ namespace ExamenP3_JDS
 
             //Base de datos
             string dbPath = FileAccessHelperJDS.GetLocalFilePath("PersonajeDB_JDS");
-            //builder.Services.AddSingleton<PersonajeRepositoryJDS>(s => ActivatorUtilities.CreateInstance<PersonajeRepositoryJDS>(s, dbPath));
+            builder.Services.AddSingleton<PersonajeRepositoryJDS>(s => ActivatorUtilities.CreateInstance<PersonajeRepositoryJDS>(s, dbPath));
             return builder.Build();
 
 #if DEBUG
